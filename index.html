@@ -1349,7 +1349,7 @@ products: [
                         name: 'Roblox (Robux Murah & Cepat)',
                         category: 'game',
                         categoryName: 'Game Online',
-                        badge: 'Fast Send',
+                        badge: 'Stock Kosong',
                         badgeColor: 'bg-rose-100 text-rose-700 border border-rose-200',
                         iconBg: 'bg-gradient-to-tr from-rose-500 to-pink-600',
                         iconText: 'RBX',
@@ -1369,7 +1369,7 @@ products: [
                         name: 'Free Fire (Diamond FF)',
                         category: 'game',
                         categoryName: 'Game Online',
-                        badge: 'Instan',
+                        badge: 'Stock Kosong',
                         badgeColor: 'bg-amber-100 text-amber-700 border border-amber-200',
                         iconBg: 'bg-gradient-to-tr from-amber-500 to-orange-500',
                         iconText: 'FF',
@@ -1382,7 +1382,7 @@ products: [
                             { label: '140 Diamond FF', price: 20000 },
                             { label: '355 Diamond FF', price: 50000 },
                             { label: '720 Diamond FF', price: 100000 },
-                            { label: 'Membership Mingguan FF', price: 32000 },
+                            { label: 'Membership Mingguan FF', price: 29000 },
                         ]
                     },
                     {
@@ -1390,7 +1390,7 @@ products: [
                         name: 'Mobile Legends: Bang Bang',
                         category: 'game',
                         categoryName: 'Game Online',
-                        badge: 'Terlaris',
+                        badge: 'Stock Kosong',
                         badgeColor: 'bg-blue-100 text-blue-700 border border-blue-200',
                         iconBg: 'bg-gradient-to-tr from-blue-500 to-indigo-600',
                         iconText: 'ML',
@@ -1411,7 +1411,7 @@ products: [
                         name: 'Growtopia (DL & WL Murah)',
                         category: 'game',
                         categoryName: 'Game Online',
-                        badge: 'Aman 100%',
+                        badge: 'Stock Kosong',
                         badgeColor: 'bg-yellow-100 text-yellow-800 border border-yellow-200',
                         iconBg: 'bg-gradient-to-tr from-amber-400 to-yellow-600',
                         iconText: 'GT',
@@ -2094,12 +2094,7 @@ Mohon dicek dan info instruksi pembayarannya ya admin. Terima kasih!`;
             // Jangan trigger jika klik tombol input atau select
             if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
             
-            const sparkles = [
-                'Welcome to Bbylaa Store 💕',
-                'Happy Shopping! ✨',
-                'Bbylaa Store 🎀',
-                'Trusted 100% 💖'
-            ];
+        
             const textToSpawn = sparkles[Math.floor(Math.random() * sparkles.length)];
 
             const span = document.createElement('span');
