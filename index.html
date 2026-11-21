@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bbylaa Store - APK Premium, Joki Tugas & Top Up Game</title>
-    <link rel="icon" type="image/png" href="logobyla.png">
+    <link rel="icon" type="image/png" href="logobyla.jpeg">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,24 +38,29 @@
     <style>
         [x-cloak] { display: none !important; }
         
-        /* Dark Kawaii Background with bg.jpeg texture */
+/* Dark Kawaii Background dengan bg.jpeg yang lebih terlihat */
         body {
             background-color: #0e0714;
-            background-image: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.15), transparent 45%),
-                              linear-gradient(rgba(14, 7, 20, 0.88), rgba(14, 7, 20, 0.88)),
+            /* Angka 0.65 di bawah mengatur ketebalan gelap. Semakin kecil angkanya (misal 0.50), gambar bg.jpeg semakin terang/jelas */
+            background-image: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.25), transparent 55%),
+                              linear-gradient(rgba(14, 7, 20, 0.65), rgba(14, 7, 20, 0.72)),
                               url('bg.jpeg');
             background-repeat: repeat;
-            background-size: auto, auto, 360px auto;
+            background-size: auto, auto, 300px auto; /* Atau ganti '300px auto' menjadi 'cover' jika ingin 1 gambar penuh layar */
             background-attachment: fixed;
+            background-position: center;
         }
 
-        /* Glass Dark Cute Card */
+        /* Glass Dark Cute Card dengan tekstur background & glow pink */
         .cute-card {
-            background: rgba(26, 15, 36, 0.88);
-            backdrop-filter: blur(14px);
-            border: 1.5px solid rgba(244, 114, 182, 0.22);
+            background: linear-gradient(145deg, rgba(38, 20, 52, 0.82), rgba(20, 10, 29, 0.88)),
+                        url('bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(244, 114, 182, 0.3);
             border-radius: 1.5rem;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(236, 72, 153, 0.12);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 15px -3px rgba(236, 72, 153, 0.18);
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .cute-card:hover {
@@ -141,7 +146,7 @@
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink-0">
                 <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl overflow-hidden border-2 border-pink-400/50 shadow-md shadow-pink-500/20 group-hover:scale-105 transition-transform bg-[#24132f] flex items-center justify-center shrink-0">
-                    <img src="logobyla.png" 
+                    <img src="logobyla.jpeg" 
                          alt="Logo Bbylaa Store" 
                          onerror="this.onerror=null; this.src='logobyla.jpeg'; this.src='logobyla.jpg';"
                          class="w-full h-full object-cover">
@@ -159,7 +164,7 @@
                 </div>
                 <input type="text"
                        x-model="searchQuery"
-                       placeholder="Cari di BbylaaStore (Roblox, Canva, ChatGPT)..."
+                       placeholder="Cari di BbylaaStore (, Canva, ChatGPT)..."
                        class="w-full pl-9 pr-4 py-2 bg-[#21142b]/90 hover:bg-[#271833] border border-pink-500/30 rounded-2xl text-sm placeholder-pink-300/40 focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-500/20 transition-all text-pink-50 shadow-inner">
                 <button x-show="searchQuery" @click="searchQuery = ''" class="absolute inset-y-0 right-0 pr-3 flex items-center text-pink-400 hover:text-pink-300">
                     <i data-lucide="x" class="w-4 h-4"></i>
@@ -213,7 +218,7 @@
                 </div>
                 <input type="text"
                        x-model="searchQuery"
-                       placeholder="Cari kebutuhanmu (Netflix, Roblox, Joki)..."
+                       placeholder="Cari kebutuhanmu (Netflix, , Joki)..."
                        class="w-full pl-9 pr-8 py-2 bg-[#201229] border border-pink-500/30 rounded-2xl text-xs placeholder-pink-300/40 focus:outline-none focus:border-pink-400 text-pink-50 shadow-inner">
                 <button x-show="searchQuery" @click="searchQuery = ''" class="absolute inset-y-0 right-0 pr-3 flex items-center text-pink-400 hover:text-pink-300">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -410,30 +415,28 @@
                      :class="isCategoryOpen(product.category) ? '' : 'opacity-60 grayscale-[40%]'">
                     
                     <!-- Badge Tag & Status -->
-                    <div class="flex items-center justify-between mb-3 sm:mb-4">
-                        <span class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-pink-950/70 text-pink-300 border border-pink-500/30" x-text="product.categoryName"></span>
-                        <div>
-                            <span x-show="!isCategoryOpen(product.category)" class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-rose-950 text-rose-300 border border-rose-800">Layanan Tutup</span>
-                            <span x-show="isCategoryOpen(product.category)" class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-md"
+            <div class="relative z-10 flex items-center justify-between gap-1 mb-2 sm:mb-4">
+                        <span class="text-[8.5px] sm:text-[11px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-pink-950/85 text-pink-300 border border-pink-500/40 backdrop-blur-sm truncate" x-text="product.categoryName"></span>
+                        <div class="shrink-0">
+                            <span x-show="!isCategoryOpen(product.category)" class="text-[8px] sm:text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-rose-950 text-rose-300 border border-rose-800">Tutup</span>
+                            <span x-show="isCategoryOpen(product.category)" class="text-[8.5px] sm:text-[11px] font-bold px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-md block truncate max-w-[75px] sm:max-w-none shadow-sm"
                                   :class="product.badgeColor"
                                   x-text="product.badge"></span>
                         </div>
                     </div>
 
                     <!-- App/Service Info -->
-                    <div>
-                        <div class="flex items-center gap-3 mb-2.5 sm:mb-3">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center font-black text-lg sm:text-xl text-white shadow-lg relative overflow-hidden shrink-0 border border-white/20"
+                 <div class="relative z-10">
+                        <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                            <div class="w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-black text-xs sm:text-xl text-white shadow-lg relative overflow-hidden shrink-0 border border-white/30"
                                  :class="product.iconBg">
                                 <span x-text="product.iconText"></span>
                             </div>
                             <div class="min-w-0">
-                                <h3 class="font-extrabold text-white text-sm sm:text-base leading-tight group-hover:text-pink-400 transition-colors truncate" x-text="product.name"></h3>
-                                <p class="text-[11px] text-pink-400 font-semibold mt-0.5 truncate" x-text="product.subtext"></p>
+                                <h3 class="font-extrabold text-white text-xs sm:text-base leading-tight group-hover:text-pink-400 transition-colors line-clamp-2 sm:truncate drop-shadow" x-text="product.name"></h3>
+                                <p class="text-[9.5px] sm:text-[11px] text-pink-400 font-semibold mt-0.5 truncate" x-text="product.subtext"></p>
                             </div>
                         </div>
-
-                        <p class="text-slate-300 text-xs leading-relaxed mb-3 font-medium" x-text="product.description"></p>
 
                         <!-- Key Features Checklist -->
                         <ul class="space-y-1 sm:space-y-1.5 mb-4 text-[11px] sm:text-xs text-slate-300 font-medium">
@@ -468,17 +471,57 @@
                         </template>
 
                         <!-- Tampilan Produk Lain (APK, Game, Hand Made): Dropdown Varian, Harga & Keranjang -->
-                        <template x-if="product.category !== 'joki'">
-                            <div>
-                                <label class="block text-[10px] sm:text-[11px] font-bold text-pink-200/80 mb-1" 
-                                       x-text="product.category === 'game' ? 'Pilih Nominal Top Up:' : (product.category === 'handmade' ? 'Pilih Paket Custom:' : 'Pilih Paket / Durasi:')"></label>
-                                <select x-model="product.selectedVariantIndex" 
-                                        :disabled="!isCategoryOpen(product.category)"
-                                        class="w-full bg-[#231530] border border-pink-500/35 rounded-2xl px-2.5 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs text-pink-100 font-semibold focus:outline-none focus:border-pink-400 cursor-pointer disabled:cursor-not-allowed">
-                                    <template x-for="(variant, vIdx) in product.variants" :key="vIdx">
-                                        <option :value="vIdx" x-text="variant.range ? variant.label + ' - Rp ' + variant.range : variant.label + ' - Rp ' + formatRupiah(variant.price)"></option>
-                                    </template>
-                                </select>
+                         <!-- SLIDER FOTO CONTOH PRODUK (MUNCUL JIKA KARTU MEMILIKI IMAGES) -->
+
+
+
+
+<!-- SLIDER FOTO CONTOH PRODUK -->
+<template x-if="product.images && product.images.length > 0">
+    <div class="relative mb-3 rounded-xl overflow-hidden border border-pink-500/30 bg-black/40 group">
+        <div :id="'slider-' + product.id" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth" style="scrollbar-width: none;">
+            <template x-for="(img, idx) in product.images" :key="idx">
+                <img :src="img" :alt="'Contoh ' + product.name" class="w-full h-44 object-cover flex-shrink-0 snap-center">
+            </template>
+        </div>
+
+        <!-- Tombol Geser Kiri -->
+        <button type="button" 
+                @click="document.getElementById('slider-' + product.id).scrollBy({left: -260, behavior: 'smooth'})"
+                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-pink-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs shadow-md transition">
+            ❮
+        </button>
+
+        <!-- Tombol Geser Kanan -->
+        <button type="button" 
+                @click="document.getElementById('slider-' + product.id).scrollBy({left: 260, behavior: 'smooth'})"
+                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-pink-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs shadow-md transition">
+            ❯
+        </button>
+
+        <!-- Label Petunjuk Geser -->
+        <span class="absolute bottom-2 right-2 bg-black/70 text-[10px] text-pink-200 px-2.5 py-0.5 rounded-full border border-pink-500/30">
+            Geser contoh (<span x-text="product.images.length"></span> foto) ➔
+        </span>
+    </div>
+</template>
+
+<!-- Tampilan Produk Lain (APK, Game, Hand Made): Dropdown Varian, Harga & Keranjang -->
+<template x-if="product.category !== 'joki'">
+    <div>
+        <label class="block text-[10px] sm:text-[11px] font-bold text-pink-200/80 mb-1" 
+               x-text="product.category === 'game' ? 'Pilih Nominal Top Up:' : (product.category === 'handmade' ? 'Pilih Paket Custom:' : 'Pilih Paket / Durasi:')"></label>
+        <select x-model="product.selectedVariantIndex" 
+                :disabled="!isCategoryOpen(product.category)"
+                class="w-full bg-[#231530] border border-pink-500/35 rounded-2xl px-2.5 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs text-pink-100 font-semibold focus:outline-none focus:border-pink-400 cursor-pointer disabled:cursor-not-allowed">
+            <template x-for="(variant, vIdx) in product.variants" :key="vIdx">
+                <option :value="vIdx" x-text="variant.range ? variant.label + ' - Rp ' + variant.range : variant.label + ' - Rp ' + formatRupiah(variant.price)"></option>
+            </template>
+        </select>
+
+
+
+
 
                                 <!-- Price & Order Action -->
                                 <div class="flex items-end justify-between gap-2 mt-3 sm:mt-4">
@@ -966,23 +1009,28 @@
 
 products: [
                     // =================== HAND MADE ===================
-                    {
+{
                         id: 501,
                         name: 'Gantungan Kunci Akrilik Custom',
                         category: 'handmade',
                         categoryName: 'Hand Made',
-                        badge: 'Custom Foto',
+                        badge: 'coming soon',
                         badgeColor: 'bg-purple-100 text-purple-700 border border-purple-200',
                         iconBg: 'bg-gradient-to-tr from-purple-500 to-pink-500',
                         iconText: '🔑',
                         subtext: 'Bisa Request Foto, Karakter & Nama',
+                        images: [
+                            'ganci2.jpg',
+                            'ganci2.jpg',
+                            'ganci3.jpg'
+                        ],
                         description: 'Gantungan kunci akrilik bening 2 sisi anti air, cocok untuk gantungan tas, kunci motor, atau gift sahabat.',
                         features: ['Akrilik Bening 2 Sisi Tebal', 'Custom Foto & Tulisan Bebas', 'Packaging Estetik Cute'],
                         selectedVariantIndex: 0,
                         variants: [
-                            { label: 'Ganci 1 Sisi Polos', price: 8000 },
-                            { label: 'Ganci 2 Sisi Bolak-Balik', price: 12000 },
-                            { label: 'Paket Hemat 3 Pcs Ganci', price: 30000 }
+                    
+                            { label: 'Ganci 2 Sisi Bolak-Balik', price: 8000 },
+                           
                         ]
                     },
                     {
@@ -990,20 +1038,25 @@ products: [
                         name: 'Fotostrip Estetik (Custom Photo)',
                         category: 'handmade',
                         categoryName: 'Hand Made',
-                        badge: 'Best Gift',
+                        badge: 'coming soon',
                         badgeColor: 'bg-fuchsia-100 text-fuchsia-700 border border-fuchsia-200',
                         iconBg: 'bg-gradient-to-tr from-fuchsia-500 to-rose-400',
                         iconText: '📸',
                         subtext: 'Kertas Foto Tebal Glossy / Doff',
+                        images: [
+                            'fotostrip1.jpg',
+                            'fotostrip2.jpg'
+                        ],
                         description: 'Cetak foto strip polaroid ala photobooth kekinian. Frame bisa custom warna pink pastel, putih, atau hitam.',
                         features: ['Kualitas Cetak Tajam HD', 'Kertas Silky / Glossy Tebal', 'Bisa Custom 3-4 Foto'],
                         selectedVariantIndex: 0,
                         variants: [
-                            { label: 'Paket 2 Strip (Isi 6-8 Foto)', price: 10000 },
-                            { label: 'Paket 5 Strip (Isi 15-20 Foto)', price: 22000 },
-                            { label: 'Paket 10 Strip + Free Ganci', price: 40000 }
+                            { label: 'Paket 1 (Isi 6-8 Foto)', price: 10000 },
+                            { label: 'Paket 2 (Isi 15-20 Foto)', price: 30000 },
+                            
                         ]
                     },
+                    
                     // =================== AI (ChatGPT & Gemini) ===================
                     {
                         id: 1,
@@ -1353,82 +1406,49 @@ products: [
                         badgeColor: 'bg-rose-100 text-rose-700 border border-rose-200',
                         iconBg: 'bg-gradient-to-tr from-rose-500 to-pink-600',
                         iconText: 'RBX',
-                        subtext: 'Via Gamepass / Group Funds',
+                        subtext: 'Cukup Kirimkan Username Roblox',
                         description: 'Top up Robux murah legal untuk beli avatar, gamepass Blox Fruits, Brookhaven, dll.',
-                        features: ['Legal & Anti Rollback', 'Proses 5 - 15 Menit', 'Hanya Butuh Username'],
+                        features: ['Legal & Anti Rollback', 'Proses 5 - 15 Menit', 'Hanya Butuh Username', 'Nominal Lainnya Tanyakan Admin'],
                         selectedVariantIndex: 0,
                         variants: [
-                            { label: '100 Robux Clean', price: 15000 },
-                            { label: '250 Robux Clean', price: 36000 },
-                            { label: '500 Robux Clean', price: 72000 },
-                            { label: '1,000 Robux Clean', price: 140000 },
+                            { label: '80 Robux', price: 11000 },
+                            { label: '160 Robux', price: 22000 },
+                            { label: '240 Robux', price: 33000 },
+                            { label: '320 Robux', price: 44000 },
+                            { label: '400 Robux', price: 55000 },
+                            { label: '480 Robux', price: 66000 },
+                            { label: '560 Robux', price: 77000 },
+                            { label: '640 Robux', price: 88000 },
+                            { label: '720 Robux', price: 99000 },
+                            { label: '800 Robux', price: 110000 },
                         ]
                     },
+            
                     {
                         id: 202,
-                        name: 'Free Fire (Diamond FF)',
-                        category: 'game',
-                        categoryName: 'Game Online',
-                        badge: 'Stock Kosong',
-                        badgeColor: 'bg-amber-100 text-amber-700 border border-amber-200',
-                        iconBg: 'bg-gradient-to-tr from-amber-500 to-orange-500',
-                        iconText: 'FF',
-                        subtext: 'Cukup Kirimkan Player ID',
-                        description: 'Top up diamond Free Fire resmi, proses kilat masuk detik itu juga.',
-                        features: ['100% Legal via ID', 'Proses Otomatis 1 Menit', 'Bisa Member Mingguan'],
-                        selectedVariantIndex: 0,
-                        variants: [
-                            { label: '70 Diamond FF', price: 10000 },
-                            { label: '140 Diamond FF', price: 20000 },
-                            { label: '355 Diamond FF', price: 50000 },
-                            { label: '720 Diamond FF', price: 100000 },
-                            { label: 'Membership Mingguan FF', price: 29000 },
-                        ]
-                    },
-                    {
-                        id: 203,
-                        name: 'Mobile Legends: Bang Bang',
-                        category: 'game',
-                        categoryName: 'Game Online',
-                        badge: 'Stock Kosong',
-                        badgeColor: 'bg-blue-100 text-blue-700 border border-blue-200',
-                        iconBg: 'bg-gradient-to-tr from-blue-500 to-indigo-600',
-                        iconText: 'ML',
-                        subtext: 'Diamond & Weekly Diamond Pass',
-                        description: 'Top up diamond MLBB murah, siap buat gacha skin favorit & beli WDP hemat.',
-                        features: ['Format: User ID (Zone ID)', 'Weekly Pass Termurah', 'Langsung Masuk'],
-                        selectedVariantIndex: 0,
-                        variants: [
-                            { label: 'Weekly Diamond Pass (WDP)', price: 28000 },
-                            { label: '86 Diamond ML', price: 21000 },
-                            { label: '172 Diamond ML', price: 42000 },
-                            { label: '257 Diamond ML', price: 63000 },
-                            { label: '706 Diamond ML', price: 168000 },
-                        ]
-                    },
-                    {
-                        id: 204,
-                        name: 'Growtopia (DL & WL Murah)',
+                        name: 'Growtopia (DL Murah)',
                         category: 'game',
                         categoryName: 'Game Online',
                         badge: 'Stock Kosong',
                         badgeColor: 'bg-yellow-100 text-yellow-800 border border-yellow-200',
                         iconBg: 'bg-gradient-to-tr from-amber-400 to-yellow-600',
                         iconText: 'GT',
-                        subtext: 'World Lock & Diamond Lock',
-                        description: 'Beli DL / WL Growtopia terpercaya, drop via Display Box / Donation Box di world kamu.',
-                        features: ['Ketik GrowID & World Name', 'Drop di Donation / Display Box', 'Stock Selalu Ready'],
+                        subtext: 'Diamond Lock',
+                        description: 'Beli DL Growtopia terpercaya, drop via Display Box / Donation Box di world kamu.',
+                        features: ['Ketik GrowID & World Name', 'Drop di Donation / Display Box', 'Stock Selalu Ready', 'Nominal Lainnya Tanyakan Admin'],
                         selectedVariantIndex: 0,
                         variants: [
-                            { label: '50 World Lock (WL)', price: 10000 },
-                            { label: '1 Diamond Lock (1 DL)', price: 18000 },
-                            { label: '3 Diamond Lock (3 DL)', price: 53000 },
-                            { label: '5 Diamond Lock (5 DL)', price: 88000 },
+                            { label: '1 Diamond Lock (1 DL)', price: 1500 },
+                            { label: '3 Diamond Lock (3 DL)', price: 4500 },
+                            { label: '5 Diamond Lock (5 DL)', price: 7500 },
+                            { label: '10 Diamond Lock (10 DL)', price: 15000 },
+                            { label: '15 Diamond Lock (15 DL)', price: 22500 },
+                            { label: '20 Diamond Lock (20 DL)', price: 30000 },
                         ]
                     },
 
                     // =================== JOKI TUGAS ===================
-                    {
+             {
                         id: 301,
                         name: 'Joki Makalah & Paper Akademik',
                         category: 'joki',
@@ -1438,8 +1458,8 @@ products: [
                         iconBg: 'bg-gradient-to-tr from-emerald-500 to-teal-500',
                         iconText: '📄',
                         subtext: 'Harga Sesuai Kesulitan & Deadline',
-                        description: 'Pengerjaan makalah lengkap dengan cover, bab 1-3, dan daftar pustaka standar. Harga menyesuaikan tingkat kesulitan dan deadline tugas.',
-                        features: ['Belum Termasuk Turnitin', 'Harga Menyesuaikan Kesulitan & Deadline', 'Format Rapi Siap Cetak', 'Free Revisi SnK'],
+                        description: 'Pengerjaan makalah lengkap dengan cover, bab 1 - 4/5, dan daftar pustaka standar. Harga menyesuaikan tingkat kesulitan dan deadline tugas.',
+                        features: ['Belum Termasuk Turnitin', 'Harga Menyesuaikan Kesulitan & Deadline', 'Format Rapi Siap Cetak', 'Revisi Free 3x (SnK Berlaku)'],
                         selectedVariantIndex: 0,
                         variants: [
                             { label: 'Estimasi Reguler (2-3 Hari)', price: 35000 },
@@ -1449,20 +1469,21 @@ products: [
                     },
                     {
                         id: 302,
-                        name: 'Joki PPT / Slide Presentasi Canva',
+                        name: 'Joki PPT / Slide Presentasi (Canva & Morph)',
                         category: 'joki',
                         categoryName: 'Joki Tugas',
                         badge: 'Aesthetic',
                         badgeColor: 'bg-pink-100 text-pink-700 border border-pink-200',
                         iconBg: 'bg-gradient-to-tr from-pink-500 to-rose-500',
                         iconText: '📊',
-                        subtext: 'Animasi Halus & Desain Modern',
-                        description: 'Pembuatan slide presentasi menarik, tidak membosankan, dilengkapi infografis visual.',
-                        features: ['Desain Canva Pro', 'Animasi & Transisi', 'Bisa Custom Warna'],
+                        subtext: 'Transisi Morph Halus & Desain Modern',
+                        description: 'Pembuatan slide presentasi menarik dengan efek transisi Morph dinamis, tidak membosankan, dan dilengkapi infografis visual.',
+                        features: ['Desain Canva Pro & PPT', 'Animasi & Transisi Morph', 'Bisa Custom Warna'],
                         selectedVariantIndex: 0,
                         variants: [
                             { label: 'Paket 10 - 15 Slide (Reguler)', range: '10.000 - 30.000', price: 10000 },
                             { label: 'Paket 15 - 25 Slide (Reguler)', range: '18.000 - 50.000', price: 18000 },
+                            { label: 'Paket Slide + Transisi Morph', range: '25.000 - 65.000', price: 25000 },
                             { label: 'Slide Kilat Express (1x24 Jam)', range: '30.000 - 80.000', price: 30000 }
                         ]
                     },
@@ -1484,6 +1505,42 @@ products: [
                             { label: 'Rapihin Tabel & Data Excel (Estimasi)', range: '15.000 - 50.000', price: 15000 },
                             { label: 'Rapihin Format Slide PPT (Estimasi)', range: '15.000 - 45.000', price: 15000 },
                             { label: 'Paket Komplit Dokumen (Estimasi)', range: '25.000 - 75.000', price: 25000 }
+                        ]
+                    },
+                   {
+                        id: 304,
+                        name: 'Joki Project / Praktikum IT',
+                        category: 'joki',
+                        categoryName: 'Joki Tugas',
+                        badge: 'Coding & IT',
+                        badgeColor: 'bg-purple-100 text-purple-700 border border-purple-200',
+                        iconBg: 'bg-gradient-to-tr from-purple-500 to-indigo-500',
+                        iconText: '💻',
+                        subtext: 'Harga Sesuai Kesulitan & Deadline',
+                        description: 'Bantuan pengerjaan tugas praktikum IT, pembuatan program/website sederhana, debugging error, dan bisa dibuatkan sekalian dengan laporannya.',
+                        features: ['Web, Python, Java, C++, PHP, SQL', 'Bisa Sekalian Dibuatkan Laporannya', 'Free Penjelasan Alur Kode', 'Revisi Free 3x (SnK Berlaku)'],
+                        selectedVariantIndex: 0,
+                        variants: [
+                            { label: 'Praktikum / Coding Saja', price: 35000 },
+                            { label: 'Praktikum + Laporan Lengkap', price: 60000 },
+                            { label: 'Project Aplikasi / Web + Laporan', price: 120000 }
+                        ]
+                    },
+                    {
+                        id: 305,
+                        name: 'Jasa Cek Turnitin (No Repository)',
+                        category: 'joki',
+                        categoryName: 'Joki Tugas',
+                        badge: 'Coming Soon',
+                        badgeColor: 'bg-amber-100 text-amber-700 border border-amber-200',
+                        iconBg: 'bg-gradient-to-tr from-amber-500 to-orange-500',
+                        iconText: '🔍',
+                        subtext: 'Segera Hadir • Cek Plagiasi Aman',
+                        description: 'Layanan pengecekan tingkat plagiarisme dokumen menggunakan akun Turnitin No Repository (dokumen tidak tersimpan di database). Nantikan segera di Bbylaa Store!',
+                        features: ['Akun No Repository (Aman)', 'Hasil Cek Lengkap PDF', 'Proses Cepat & Privasi Terjaga', 'Segera Hadir (Coming Soon)'],
+                        selectedVariantIndex: 0,
+                        variants: [
+                            { label: 'Coming Soon (Belum Tersedia)', price: 0 }
                         ]
                     },
 
@@ -1796,6 +1853,29 @@ products: [
                         variants: [
                             { label: 'Crunchyroll Sharing 1 Bln', price: 13500 }
                         ]
+                        
+                 },
+                    {
+                     id: 418,
+                        name: 'Vidio Platinum',
+                        category: 'streaming',
+                        categoryName: 'Streaming VIP',
+                        badge: 'Sports & Original',
+                        badgeColor: 'bg-rose-950 text-rose-300 border border-rose-500/30',
+                        iconBg: 'bg-gradient-to-tr from-rose-600 to-red-500',
+                        iconText: 'VD',
+                        subtext: 'Sharing & Private 1 Bulan',
+                        description: 'Nonton ribuan tayangan olahraga eksklusif, Vidio Original Series, film box office, hingga drama Korea & anime.',
+                        features: ['Tayangan Sports & Original Series', 'Tersedia Mobile, All Device & TV', 'Full Garansi jika memenuhi SnK'],
+                        selectedVariantIndex: 0,
+                        variants: [
+                            { label: 'Platinum Mobile Sharing (2U) - 1 Bln', price: 18000 },
+                            { label: 'Platinum Mobile Private - 1 Bln', price: 28000 },
+                            { label: 'Platinum All Device Sharing (2U) - 1 Bln', price: 25000 },
+                            { label: 'Platinum All Device Private - 1 Bln', price: 40000 },
+                            { label: 'Platinum Only TV - 1 Bln', price: 10000 }
+                        ]
+                        
                     }
                 ],
 
